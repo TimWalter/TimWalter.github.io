@@ -1,0 +1,4 @@
+baseURL = 'https://timwalter.github.io/'
+languageCode = 'en-gb'
+title = 'Tim Walter'
+theme = 'ananke'
