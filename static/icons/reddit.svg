@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 216 216"
+   version="1.1"
+   id="svg43"
+   sodipodi:docname="reddit.svg"
+   width="216"
+   height="216"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview43"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.2044556"
+     inkscape:cx="422.5533"
+     inkscape:cy="39.692339"
+     inkscape:window-width="2560"
+     inkscape:window-height="1361"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg43" />
+  <defs
+     id="defs36">
+    <style
+       id="style1">
+      .cls-1 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#radial-gradient-2);
+      }
+
+      .cls-3 {
+        fill: url(#radial-gradient-3);
+      }
+
+      .cls-4 {
+        fill: url(#radial-gradient-4);
+      }
+
+      .cls-5 {
+        fill: url(#radial-gradient-6);
+      }
+
+      .cls-6 {
+        fill: url(#radial-gradient-8);
+      }
+
+      .cls-7 {
+        fill: url(#radial-gradient-5);
+      }
+
+      .cls-8 {
+        fill: url(#radial-gradient-7);
+      }
+
+      .cls-9 {
+        fill: #842123;
+      }
+
+      .cls-10 {
+        fill: #bbcfda;
+      }
+
+      .cls-11 {
+        fill: #ff6101;
+      }
+
+      .cls-12 {
+        fill: #fff;
+      }
+
+      .cls-13 {
+        fill: #ff4500;
+      }
+
+      .cls-14 {
+        fill: #ffc49c;
+      }
+    </style>
+    <radialGradient
+       id="radial-gradient"
+       cx="370.48999"
+       cy="151.59"
+       fx="370.48999"
+       fy="142.47"
+       r="127.45"
+       gradientTransform="matrix(1,0,0,0.87,0,19.13)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#feffff"
+         id="stop1" />
+      <stop
+         offset=".4"
+         stop-color="#feffff"
+         id="stop2" />
+      <stop
+         offset=".51"
+         stop-color="#f9fcfc"
+         id="stop3" />
+      <stop
+         offset=".62"
+         stop-color="#edf3f5"
+         id="stop4" />
+      <stop
+         offset=".7"
+         stop-color="#dee9ec"
+         id="stop5" />
+      <stop
+         offset=".72"
+         stop-color="#d8e4e8"
+         id="stop6" />
+      <stop
+         offset=".76"
+         stop-color="#ccd8df"
+         id="stop7" />
+      <stop
+         offset=".8"
+         stop-color="#c8d5dd"
+         id="stop8" />
+      <stop
+         offset=".83"
+         stop-color="#ccd6de"
+         id="stop9" />
+      <stop
+         offset=".85"
+         stop-color="#d8dbe2"
+         id="stop10" />
+      <stop
+         offset=".88"
+         stop-color="#ede3e9"
+         id="stop11" />
+      <stop
+         offset=".9"
+         stop-color="#ffebef"
+         id="stop12" />
+    </radialGradient>
+    <radialGradient
+       id="radial-gradient-2"
+       cx="64.379997"
+       fx="64.379997"
+       fy="142.47"
+       r="127.45"
+       xlink:href="#radial-gradient" />
+    <radialGradient
+       id="radial-gradient-3"
+       cx="220.14"
+       cy="135.08"
+       fx="220.14"
+       fy="135.08"
+       r="384.44"
+       gradientTransform="matrix(1,0,0,0.7,0,40.35)"
+       xlink:href="#radial-gradient" />
+    <radialGradient
+       id="radial-gradient-4"
+       cx="134.7"
+       cy="240.48"
+       fx="134.7"
+       fy="240.48"
+       r="32.119999"
+       gradientTransform="matrix(1,0,0,1.46,0,-110.04)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#f60"
+         id="stop13" />
+      <stop
+         offset=".5"
+         stop-color="#ff4500"
+         id="stop14" />
+      <stop
+         offset=".7"
+         stop-color="#fc4301"
+         id="stop15" />
+      <stop
+         offset=".82"
+         stop-color="#f43f07"
+         id="stop16" />
+      <stop
+         offset=".92"
+         stop-color="#e53812"
+         id="stop17" />
+      <stop
+         offset="1"
+         stop-color="#d4301f"
+         id="stop18" />
+    </radialGradient>
+    <radialGradient
+       id="radial-gradient-5"
+       cx="6191.5"
+       cy="240.48"
+       fx="6191.5"
+       fy="240.48"
+       r="32.119999"
+       gradientTransform="matrix(-1,0,0,1.46,6489.32,-110.04)"
+       xlink:href="#radial-gradient-4" />
+    <radialGradient
+       id="radial-gradient-6"
+       cx="215.92999"
+       cy="338.51999"
+       fx="215.92999"
+       fy="338.51999"
+       r="113.26"
+       gradientTransform="matrix(1,0,0,0.66,0,116.39)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#172e35"
+         id="stop19" />
+      <stop
+         offset=".29"
+         stop-color="#0e1c21"
+         id="stop20" />
+      <stop
+         offset=".73"
+         stop-color="#030708"
+         id="stop21" />
+      <stop
+         offset="1"
+         stop-color="#000"
+         id="stop22" />
+    </radialGradient>
+    <radialGradient
+       id="radial-gradient-7"
+       cx="315.81"
+       cy="3.47"
+       fx="315.81"
+       fy="3.47"
+       r="99.419998"
+       gradientTransform="matrix(1,0,0,0.98,0,0.06)"
+       xlink:href="#radial-gradient" />
+    <radialGradient
+       id="radial-gradient-8"
+       cx="274.38"
+       cy="103.82"
+       fx="274.38"
+       fy="103.82"
+       r="81.489998"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset=".48"
+         stop-color="#7a9299"
+         id="stop23" />
+      <stop
+         offset=".67"
+         stop-color="#172e35"
+         id="stop24" />
+      <stop
+         offset=".75"
+         stop-color="#000"
+         id="stop25" />
+      <stop
+         offset=".82"
+         stop-color="#172e35"
+         id="stop26" />
+    </radialGradient>
+    <symbol
+       id="Snoo"
+       viewBox="0 0 432.21 377.72">
+      <g
+         id="g36">
+        <circle
+           class="cls-1"
+           cx="369.16"
+           cy="188.55"
+           r="63.049999"
+           id="circle26" />
+        <circle
+           class="cls-2"
+           cx="63.049999"
+           cy="188.55"
+           r="63.049999"
+           id="circle27" />
+        <ellipse
+           class="cls-3"
+           cx="216.25999"
+           cy="242.72"
+           rx="180"
+           ry="135"
+           id="ellipse27" />
+        <g
+           id="g28">
+          <path
+             class="cls-9"
+             d="m 163.04,229.59 c -1.05,22.87 -16.23,31.17 -33.91,31.17 -17.68,0 -31.15,-11.71 -30.09,-34.58 1.05,-22.87 16.23,-38.01 33.91,-38.01 17.68,0 31.15,18.54 30.09,41.42 z"
+             id="path27" />
+          <path
+             class="cls-9"
+             d="m 333.48,226.18 c 1.05,22.87 -12.42,34.58 -30.09,34.58 -17.67,0 -32.85,-8.3 -33.91,-31.17 -1.05,-22.87 12.42,-41.42 30.09,-41.42 17.67,0 32.85,15.13 33.91,38.01 z"
+             id="path28" />
+        </g>
+        <path
+           class="cls-4"
+           d="m 163.05,231.59 c -0.99,21.41 -15.19,29.17 -31.73,29.17 -16.54,0 -29.15,-11.63 -28.16,-33.03 0.99,-21.41 15.19,-35.41 31.73,-35.41 16.54,0 29.15,17.86 28.16,39.27 z"
+           id="path29" />
+        <path
+           class="cls-7"
+           d="m 269.47,231.59 c 0.99,21.41 15.19,29.17 31.73,29.17 16.54,0 29.15,-11.63 28.16,-33.03 -0.99,-21.41 -15.19,-35.41 -31.73,-35.41 -16.54,0 -29.15,17.86 -28.16,39.27 z"
+           id="path30" />
+        <ellipse
+           class="cls-14"
+           cx="145.19"
+           cy="212.03999"
+           rx="7"
+           ry="7.6399999"
+           id="ellipse30" />
+        <ellipse
+           class="cls-14"
+           cx="311.64001"
+           cy="212.03999"
+           rx="7"
+           ry="7.6399999"
+           id="ellipse31" />
+        <path
+           class="cls-10"
+           d="m 216.26,276.02 c -22.32,0 -43.71,1.08 -63.49,3.04 -3.38,0.34 -5.52,3.78 -4.21,6.86 11.08,25.97 37.22,44.21 67.7,44.21 30.48,0 56.62,-18.24 67.7,-44.21 1.31,-3.08 -0.83,-6.52 -4.21,-6.86 -19.78,-1.97 -41.17,-3.04 -63.49,-3.04 z"
+           id="path31" />
+        <path
+           class="cls-12"
+           d="m 216.26,280.98 c -22.25,0 -43.57,1.09 -63.29,3.09 -3.37,0.34 -5.51,3.84 -4.2,6.97 11.05,26.38 37.1,44.91 67.49,44.91 30.39,0 56.44,-18.53 67.49,-44.91 1.31,-3.12 -0.83,-6.62 -4.2,-6.97 -19.72,-2 -41.04,-3.09 -63.29,-3.09 z"
+           id="path32" />
+        <path
+           class="cls-5"
+           d="m 216.26,278.4 c -21.9,0 -42.89,1.08 -62.3,3.04 -3.32,0.34 -5.42,3.78 -4.13,6.86 10.87,25.97 36.52,44.21 66.44,44.21 29.92,0 55.56,-18.24 66.44,-44.21 1.29,-3.08 -0.81,-6.52 -4.13,-6.86 -19.41,-1.97 -40.4,-3.04 -62.31,-3.04 z"
+           id="path33" />
+        <circle
+           class="cls-8"
+           cx="314.84"
+           cy="44.68"
+           r="44.68"
+           id="circle33" />
+        <path
+           class="cls-6"
+           d="m 215.62,113.41 c -5.35,0 -9.69,-2.24 -9.69,-5.69 0,-40.03 32.56,-72.59 72.59,-72.59 5.35,0 9.69,4.34 9.69,9.69 0,5.35 -4.34,9.69 -9.69,9.69 -29.34,0 -53.22,23.87 -53.22,53.22 0,3.45 -4.34,5.69 -9.69,5.69 z"
+           id="path34" />
+        <path
+           class="cls-11"
+           d="m 151.29,242.18 c 0,8.28 -8.81,12 -19.69,12 -10.88,0 -19.69,-3.72 -19.69,-12 0,-8.28 8.81,-15 19.69,-15 10.88,0 19.69,6.72 19.69,15 z"
+           id="path35" />
+        <path
+           class="cls-11"
+           d="m 320.6,242.18 c 0,8.28 -8.81,12 -19.69,12 -10.88,0 -19.69,-3.72 -19.69,-12 0,-8.28 8.81,-15 19.69,-15 10.88,0 19.69,6.72 19.69,15 z"
+           id="path36" />
+      </g>
+    </symbol>
+  </defs>
+  <path
+     class="cls-13"
+     d="M 108,0 V 0 C 48.35,0 0,48.35 0,108 v 0 c 0,29.82 12.09,56.82 31.63,76.37 L 11.06,204.94 C 6.98,209.02 9.87,216 15.64,216 H 108 c 0,0 0,0 0,0 59.65,0 108,-48.35 108,-108 v 0 C 216,48.35 167.65,0 108,0 Z"
+     id="path37" />
+  <use
+     width="432.20999"
+     height="377.72"
+     transform="matrix(0.4,0,0,0.4,21.56,31.55)"
+     xlink:href="#Snoo"
+     id="use37" />
+</svg>

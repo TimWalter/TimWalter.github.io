@@ -1,0 +1,35 @@
+<section id="teaching" class="section">
+  <div class="container">
+    <div class="hr"><div class="tk"></div></div>
+  </div>
+  <div class="container">
+    <h2 class="section-header">Reviewing</h2>
+  </div>
+  <div class="container">
+    <div class="reviewing">
+      {{ with site.GetPage "reviewing" }}
+      <!--          {{jsonify (dict "indent" " ") (.Resources.ByType "page")}}-->
+      {{ range (.Resources.ByType "page") }}
+      <div class="review columns is-centered is-mobile">
+        <div class="column is-half-desktop">
+          <!--  Title  -->
+          <h3 class="review-title has-text-centered">
+            {{.Title}}
+          </h3>
+          <div class="reviewing-conference-name has-text-centered">{{.Params.Name}}</div>
+
+          <!--  Projects  -->
+          <div class="columns is-centered is-mobile">
+            <ul class="reviews column is-half">
+              {{ range $index, $element := .Params.Reviews }}
+              <li>{{.year}}: {{.text}}</li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{end}}
+      {{end}}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+<section id="teaching" class="section">
+  <div class="container">
+    <div class="hr"><div class="tk"></div></div>
+  </div>
+  <div class="container">
+    <h2 class="section-header">Teaching</h2>
+  </div>
+  <div class="container">
+    <div class="teachings">
+      {{ with site.GetPage "teaching" }}
+      {{ range sort .Pages "Date" "desc" }}
+      <div class="teaching columns">
+        <div class="column is-6">
+          <!--  Title  -->
+            <div>
+            <span class="teaching-category">{{.Params.Category}}</span>
+          </div>
+          <h3 class="teaching-title">
+            {{ if .Params.Link }}
+              <a href="{{.Params.Link}}" target="_blank">{{.Title}}</a>
+            {{else}}
+              {{.Title}}
+            {{end}}
+          </h3>
+
+          <!--  Semester  -->
+          <div>
+            <span class="teaching-role">{{.Params.Role}}</span> - <span class="teaching-semester">{{.Params.Semester}}</span>
+          </div>
+        </div>
+<!--                                {{jsonify (dict "indent" " ") .}}-->
+        <div class="column">
+          <!--  Description  -->
+          <div class="teaching-description">
+            {{.Content}}
+          </div>
+
+          <!--  Projects  -->
+          <ul class="teaching-projects">
+            {{ range $index, $element := .Params.Projects }}
+            <li>{{.name}}</li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+      {{end}}
+      {{end}}
+    </div>
+  </div>
+</section>

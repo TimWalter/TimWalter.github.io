@@ -1,0 +1,102 @@
+<section id="publications" class="section">
+  <div class="container">
+    <div class="hr">
+      <div class="tk"></div>
+    </div>
+  </div>
+  <div class="container">
+    <h2 class="section-header">Publications</h2>
+  </div>
+  <div class="container">
+    <div class="publications">
+
+      {{ with site.GetPage "publications" }}
+      {{ range sort .Pages "Date" "desc" }}
+      {{ $slug := index (last 1 .SectionsEntries) 0 }}
+
+      <div class="publication columns">
+
+        <div class="column is-4 publication-cover-column">
+          <!--  Left  -->
+          <!--  Visuals  -->
+          <div class="publication-cover" style="width: 100%">
+
+            {{ with .Resources.Get "cover.jpg" }}
+            <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" class="hover-1">
+            {{ end }}
+
+            {{ with .Resources.Get "cover.mp4" }}
+            <video autoplay="" loop="" muted="" playsinline="" class="hover-2">
+              <source src="{{ .RelPermalink }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            {{ end }}
+          </div>
+        </div>
+
+        <div class="column">
+          <!--  Right  -->
+          <!--  Title  -->
+          <h3 class="publication-title">{{.Title}}</h3>
+
+          <!--  Conference  -->
+          <div class="publication-conference">{{.Params.Conference}}{{ if .Params.Bonus }} <span class="bonus">({{
+              .Params.Bonus }})</span>{{ end }}</div>
+
+          <!--                                  {{jsonify (dict "indent" " ") .}}-->
+
+
+          <!--  Description  -->
+          <div class="publication-description">
+            {{.Content}}
+          </div>
+
+          <!--  Authors  -->
+          <div class="publication-authors">
+            {{ range $index, $element := .Params.Authors }}{{ if gt $index 0}}, {{end}}{{ if eq . "Tim Walter"}}<span
+              class="author-me">{{ . }}</span>{{ else }}{{ . }}{{ end }}{{ end }}
+          </div>
+
+          <!--  Links  -->
+          <div class="publication-links">
+            {{ range $index, $element := .Params.Links }}
+            <span class="publication-link"><a href="{{.url}}" target="_blank">{{.name}}</a></span>
+            {{ end }}
+            <!--  BibTeX  -->
+            {{ if .Params.Bibtex }}
+            <span class="publication-link"><a data-target="modal-bibtex-{{$slug}}"
+                class="js-modal-trigger">Bibtex</a></span>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+
+      <!--  BibTeX Modal -->
+      {{ if .Params.Bibtex }}
+      <div id="modal-bibtex-{{$slug}}" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Cite</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            {{ $bibtex_path := printf "%s/%s" .SectionsPath .Params.Bibtex }}
+            <pre><code id="bibtex-{{$slug}}">{{ readFile $bibtex_path}}</code></pre>
+          </section>
+          <footer class="modal-card-foot">
+            <a href="{{ .SectionsPath }}/{{.Params.Bibtex}}" class="button button-color"><span class="icon"><i
+                  class="fas fa-download"></i></span><span>Download</span></a>
+            <button class="button button-color js-copy-clipboard" data-target="bibtex-{{$slug}}"><span class="icon"><i
+                  class="fas fa-copy"></i></span><span>Copy</span></button>
+            <button class="button">Close</button>
+          </footer>
+        </div>
+      </div>
+      {{ end }}
+
+      {{end}}
+      {{end}}
+    </div>
+  </div>
+</section>
