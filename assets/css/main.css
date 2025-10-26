@@ -25,6 +25,8 @@
   --tw-copy-btn-active-bg: #eef1f4;
   --tw-copy-btn-success-bg: #d1e7dd;
   --tw-copy-btn-success-border: #9ac7b3;
+  --tw-icon-shadow: rgba(0,0,0,0.2);
+  --tw-sep: #e5e7eb;
 }
 
 :root[data-bs-theme="dark"] {
@@ -51,6 +53,8 @@
   --tw-copy-btn-active-bg: #2a2e33;
   --tw-copy-btn-success-bg: #244d3b;
   --tw-copy-btn-success-border: #2d6f52;
+ --tw-icon-shadow: rgba(255,255,255,0.15);
+ --tw-sep: #3a3f46;
 }
 
 /* =========================
@@ -70,7 +74,6 @@ a {
 }
 a:hover {
   color: var(--tw-link-hover);
-  text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
 }
@@ -120,9 +123,10 @@ li { list-style: disc; }
 #navbar-main .home-link {
   font-size: 30px;
   font-weight: bold;
-  color: #333;
+  color: var(--tw-nav-link);
   margin-right: 20px;
 }
+
 
 /* Make the right column vertically center its children (links + toggle) */
 #navbar-main .columns > .column:last-child {
@@ -241,10 +245,45 @@ li { list-style: disc; }
   vertical-align: middle;
   background: transparent !important;
   border: none; box-shadow: none;
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 2px 3px  var(--tw-icon-shadow));
 }
 .social-icon img:hover { transform: scale(1.1); opacity: 0.8; }
 .social-icon { margin: 0 1px; display: inline-block; }
+
+:root[data-bs-theme="dark"] #social-media-icons .social-icon.github {
+  position: relative; /* anchor for the badge */
+}
+
+/* Remove the old white tile on the image itself */
+:root[data-bs-theme="dark"] #social-media-icons .social-icon.github img {
+  background: transparent !important;
+  position: relative;
+  z-index: 1; /* keep image above the badge */
+}
+
+/* Centered circular badge behind the icon */
+:root[data-bs-theme="dark"] #social-media-icons .social-icon.github::before {
+  --gh-badge-size: 30px;          /* tweak size here (18–24px works well) */
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--gh-badge-size);
+  height: var(--gh-badge-size);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid var(--tw-border);
+  box-shadow: 0 1px 2px var(--tw-icon-shadow);
+  pointer-events: none;           /* don't block clicks */
+  z-index: 0;
+  transition: transform .2s ease;
+}
+
+/* Match the existing hover zoom by scaling the badge too */
+:root[data-bs-theme="dark"] #social-media-icons .social-icon.github:hover::before {
+  transform: translate(-50%, -50%) scale(1.1);
+}
 
 /* =========================
    Tooltip
@@ -338,39 +377,122 @@ div.publication {
    HR separator
    ========================= */
 .hr {
-  width: 100%; border-top: 2px solid #f5f5f5;
-  position: relative; margin: 1.5rem 0;
+  width: 100%;
+  border-top: 2px solid var(--tw-sep); 
+  position: relative;
+  margin: 1.5rem 0;
 }
-.tk {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="1" x2="100%" y2="1" style="stroke:%23f5f5f5;stroke-width:2" /><line x1="50%" y1="100%" x2="50%" y2="0" style="stroke:%23f5f5f5;stroke-width:2" /><line x1="50%" y1="50%" x2="100%" y2="0" style="stroke:%23f5f5f5;stroke-width:2" /><line x1="50%" y1="50%" x2="100%" y2="100%" style="stroke:%23f5f5f5;stroke-width:2" /></svg>');
-}
-.hr .tk { width: 30px; height: 30px; position: absolute; top: -2px; right: 0; }
+
 
 /* =========================
    Modals (Bulma)
    ========================= */
-.modal {
-  z-index: 2000;
-  height: 0; opacity: 0; display: flex;
-  transition: opacity 0.3s;
-}
-.modal.is-active { height: 100%; opacity: 1; }
-.modal-open { overflow: hidden; }
-.modal-open .modal { overflow-x: hidden; overflow-y: auto; }
 
-.modal-background {
-  background-color: rgba(0,0,0,0.6);
-  backdrop-filter: blur(1px);
+.modal .modal-background {
+  background-color: rgba(0, 0, 0, 0.35); /* was ~0.86 in Bulma */
 }
-.modal-card,
-.modal-card-head,
-.modal-card-foot {
-  background-color: var(--tw-card-bg);
+
+.modal-card {
+  width: min(760px, calc(100vw - 2rem));
+  border: 1px solid var(--tw-border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+  margin: 0 auto; /* ensure horizontal center */
+  transition: opacity 0.3s;
+  background: var(--tw-card-bg);
   color: var(--tw-body-color);
 }
+
+/* Remove the old slide-in offset if present */
+.modal .modal-card,
+.modal.is-active .modal-card {
+  margin-top: 0;
+}
+
+/* Header: accent title, no bottom border (we add an hr instead) */
+.modal-bibtex-head {
+  display: flex;
+  align-items: center;
+  border-bottom: 0;           /* keep the hr as the divider */
+    padding: 12px 16px 0px; /* slightly more horizontal, a touch less bottom */
+    margin: 0;
+}
+.modal-bibtex-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.3rem;        /* slightly larger */
+  letter-spacing: 0;          /* normal */
+  color: var(--tw-body-color);/* normal text color per theme */
+}
+
+/* Themed divider just under the header */
+.modal-bibtex-sep {
+  border: 0;
+  border-top: 1px solid var(--tw-sep);
+  margin: 0 0 6px;
+}
+
+/* Modal body padding */
+.modal-card-body {
+  padding: 12px 14px 16px;
+}
 .modal-card-head,
-.modal-card-foot { border-color: var(--tw-border); }
-.modal-card-title { color: var(--tw-body-color); }
+.modal-card-body,
+.modal-card-foot {
+  background: var(--tw-card-bg);
+  color: var(--tw-body-color);
+}
+
+.modal-bibtex-head .delete {
+  /* layout */
+  margin-left: auto;          /* send to the far right */
+  flex: 0 0 auto;
+
+  /* size and shape to match small icon buttons */
+  width: 28px;
+  height: 28px;
+  min-width: 0;
+  border-radius: 0px;
+
+  /* visual style aligned with .copy-icon-btn/.download-icon-btn */
+  background: var(--tw-card-bg);
+
+  /* the X is drawn via ::before/::after with currentColor */
+  color: #bbb;
+  transition: background .15s, color .15s, border-color .15s, box-shadow .15s;
+}
+
+:root[data-bs-theme="light"] .modal-bibtex-head .delete { color: #555; }
+
+.modal-bibtex-head .delete:hover {
+  background: var(--tw-copy-btn-hover-bg);
+  color: #fff;
+}
+:root[data-bs-theme="light"] .modal-bibtex-head .delete:hover { color: #000; }
+
+.modal-bibtex-head .delete:active {
+  background: var(--tw-copy-btn-active-bg);
+}
+.modal-bibtex-head .delete::before,
+.modal-bibtex-head .delete::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;                /* line length */
+  height: 2px;                /* line thickness */
+  border-radius: 1px;
+  background-color: currentColor;
+  transform-origin: center;
+}
+
+.modal-bibtex-head .delete::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.modal-bibtex-head .delete::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
 
 /* =========================
    BibTeX code block + actions
@@ -382,12 +504,29 @@ div.publication {
   background: var(--tw-code-bg);
   border: 1px solid var(--tw-code-border);
   border-radius: 6px;
-  padding: 14px 92px 14px 16px; /* space on right for two buttons */
+  padding: 14px 92px 14px 16px; /* room for two buttons */
   overflow: auto;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  max-height: 45vh;             /* avoid tiny inner viewport */
+  font-size: 0.85rem;           /* compact but readable */
+  line-height: 1.35;
   margin: 0;
 }
+.bibtex-pre {
+  scrollbar-color: var(--tw-border) var(--tw-card-bg); /* thumb, track */
+  scrollbar-width: thin;
+}
+.bibtex-pre::-webkit-scrollbar {
+  width: 8px; height: 8px;
+}
+.bibtex-pre::-webkit-scrollbar-track {
+  background: var(--tw-card-bg);
+  border-radius: 8px;
+}
+.bibtex-pre::-webkit-scrollbar-thumb {
+  background-color: var(--tw-border);
+  border-radius: 8px;
+}
+
 .bibtex-pre code {
   background: transparent;
   color: var(--tw-body-color);

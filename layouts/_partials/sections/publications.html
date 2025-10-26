@@ -59,38 +59,43 @@
           </div>
         </div>
       </div>
- {{ if .Params.Bibtex }}
-    {{ $bibtex_path := replace .File.Path "index.md" .Params.Bibtex }}
-    <div id="modal-bibtex-{{ $id }}" class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <section class="modal-card-body">
-          <div class="code-block-wrapper">
-            <pre class="bibtex-pre"><code id="bibtex-{{ $id }}">{{ readFile $bibtex_path }}</code></pre>
+{{ if .Params.Bibtex }}
+  {{ $bibtex_path := replace .File.Path "index.md" .Params.Bibtex }}
+  <div id="modal-bibtex-{{ $id }}" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head modal-bibtex-head">
+        <p class="modal-bibtex-title">BibTeX</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
 
-            <!-- Actions (top-right, embedded) -->
-            <div class="code-actions">
-              <a class="download-icon-btn"
-                 href="{{ .RelPermalink }}{{ .Params.Bibtex }}"
-                 download="{{ .Params.Bibtex }}"
-                 aria-label="Download BibTeX"
-                 title="Download BibTeX">
-                <i class="fa-solid fa-download"></i>
-              </a>
+      <section class="modal-card-body">
+        <hr class="modal-bibtex-sep">
+        <div class="code-block-wrapper">
+          <pre class="bibtex-pre"><code id="bibtex-{{ $id }}">{{ readFile $bibtex_path }}</code></pre>
 
-              <button type="button"
-                      class="copy-icon-btn"
-                      aria-label="Copy BibTeX"
-                      title="Copy BibTeX"
-                      data-target="bibtex-{{ $id }}">
-                <i class="fa-regular fa-clone"></i>
-              </button>
-            </div>
+          <div class="code-actions">
+            <a class="download-icon-btn"
+               href="{{ .RelPermalink }}{{ .Params.Bibtex }}"
+               download="{{ .Params.Bibtex }}"
+               aria-label="Download BibTeX"
+               title="Download BibTeX">
+              <i class="fa-solid fa-download"></i>
+            </a>
+
+            <button type="button"
+                    class="copy-icon-btn"
+                    aria-label="Copy BibTeX"
+                    title="Copy BibTeX"
+                    data-target="bibtex-{{ $id }}">
+              <i class="fa-regular fa-clone"></i>
+            </button>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
-  {{ end }}
+  </div>
+{{ end }}
       {{ end }}
       {{ end }}
     </div>
