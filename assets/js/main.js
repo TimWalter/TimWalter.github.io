@@ -118,3 +118,131 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// Theme toggle: apply stored or system preference, persist changes, and swap themed images.
+(function () {
+    var STORAGE_KEY = 'color-mode';
+
+    function systemMode() {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function storedMode() {
+        try { return localStorage.getItem(STORAGE_KEY); } catch(e) { return null; }
+    }
+    function setAttr(mode) {
+        document.documentElement.setAttribute('data-bs-theme', mode);
+    }
+    function swapThemeImages(mode) {
+        document.querySelectorAll('[data-theme-img]').forEach(function (img) {
+            var lightSrc = img.getAttribute('data-light');
+            var darkSrc  = img.getAttribute('data-dark');
+
+            // Optional heuristic: if only data-light provided and it's an .svg, try *_dark.svg
+            if (!darkSrc && lightSrc && /\.svg$/i.test(lightSrc)) {
+                darkSrc = lightSrc.replace(/\.svg$/i, '_dark.svg');
+            }
+            var target = (mode === 'dark') ? darkSrc : lightSrc;
+            if (target && img.getAttribute('src') !== target) {
+                img.setAttribute('src', target);
+            }
+        });
+    }
+    function apply(mode) {
+        setAttr(mode);
+        swapThemeImages(mode);
+        document.dispatchEvent(new CustomEvent('theme-changed', { detail: { mode: mode }}));
+        // Reflect in toggle if present
+        var toggle = document.getElementById('theme-toggle');
+        if (toggle) {
+            if (!storedMode()) {
+                // If no override, reflect system
+                toggle.checked = (systemMode() === 'dark');
+            } else {
+                toggle.checked = (mode === 'dark');
+            }
+        }
+    }
+    function setOverride(valOrNull) {
+        try {
+            if (valOrNull === null) {
+                localStorage.removeItem(STORAGE_KEY);
+                apply(systemMode());
+            } else {
+                localStorage.setItem(STORAGE_KEY, valOrNull);
+                apply(valOrNull);
+            }
+        } catch (e) {
+            apply(valOrNull || systemMode());
+        }
+    }
+
+    // Initial apply (honor stored override or system)
+    apply(storedMode() || systemMode());
+
+    // React to system changes when no override is set
+    var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq && mq.addEventListener) {
+        mq.addEventListener('change', function (e) {
+            if (!storedMode()) {
+                apply(e.matches ? 'dark' : 'light');
+            }
+        });
+    }
+
+    // Hook up toggle when DOM is ready (in case element isn't present immediately)
+    document.addEventListener('DOMContentLoaded', function () {
+        var toggle = document.getElementById('theme-toggle');
+        if (toggle) {
+            // checked = dark
+            toggle.checked = (document.documentElement.getAttribute('data-bs-theme') === 'dark');
+            toggle.addEventListener('change', function () {
+                setOverride(toggle.checked ? 'dark' : 'light');
+            });
+        }
+        // Late pass for images that loaded after script
+        swapThemeImages(document.documentElement.getAttribute('data-bs-theme'));
+    });
+})();
+
+// ...existing code...
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.copy-icon-btn') || []).forEach(($btn) => {
+    const targetId = $btn.dataset.target;
+    if (!targetId) return;
+
+    const originalHtml = $btn.innerHTML;
+    let timeoutId = null;
+
+    function indicateCopied() {
+      $btn.classList.add('copied');
+      $btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        $btn.classList.remove('copied');
+        $btn.innerHTML = originalHtml; // restores fa-regular fa-clone
+      }, 1500);
+    }
+
+    $btn.addEventListener('click', () => {
+      const codeEl = document.getElementById(targetId);
+      if (!codeEl) return;
+      const text = (codeEl.innerText || codeEl.textContent || '').trim();
+
+      function fallback() {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); indicateCopied(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(indicateCopied).catch(fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+});

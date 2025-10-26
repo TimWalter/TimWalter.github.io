@@ -1,5 +1,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+
+<!-- Hint browsers we support both color schemes -->
+<meta name="color-scheme" content="light dark">
+
+<!-- Early theme bootstrap: apply stored or system mode before CSS to avoid FOUC -->
+<script>
+(function () {
+  try {
+    var stored = localStorage.getItem('color-mode'); // 'light' | 'dark' | null
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var mode = stored ? stored : (systemDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-bs-theme', mode);
+  } catch (e) { /* fail silent */ }
+})();
+</script>
+
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 {{ partialCached "head/css.html" . }}

@@ -5,3 +5,11 @@ theme = 'ananke'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+
+[module]
+[[module.imports]]
+disable = false
+ignoreConfig = false
+ignoreImports = false
+path = 'github.com/theNewDynamic/gohugo-theme-ananke/v2'
