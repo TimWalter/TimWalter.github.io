@@ -4,6 +4,7 @@ conference = 'IEEE Open Journal of Control Systems 2025'
 date = 2025-09-09
 authors = [ 'Tim Walter', 'Hannah Markgraf', 'Jonathan Külz', 'Matthias Althoff' ]
 cover1 = 'cover.jpg'
+cover1_dark = "dark_cover.jpg"
 bibtex = 'walter2025safegbpo.bib'
 
 [[links]]

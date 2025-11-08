@@ -340,7 +340,10 @@ div.publication {
   transition: all 0.3s; max-width: 96%; margin: 0 auto; display: block; padding-bottom: 2%;
 }
 .publication:hover .hover-single { max-width: 100%; padding-bottom: 0; }
-
+/* Theme-specific cover images */
+.publication-cover img.theme-dark { display: none; }
+:root[data-bs-theme="dark"] .publication-cover img.theme-light { display: none; }
+:root[data-bs-theme="dark"] .publication-cover img.theme-dark { display: inline; }
 /* Text */
 .publication-title { font-size: 24px; font-weight: bold; }
 .publication-conference { margin-top: -5px; color: var(--tw-link); }
