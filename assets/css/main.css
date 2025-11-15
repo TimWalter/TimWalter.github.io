@@ -353,20 +353,20 @@ div.publication {
 .publication .author-me { font-weight: bold; color: #666; }
 
 /* Link buttons */
-.publication-links { margin-left: -5px; }
-.publication-link {
-  display: inline-block; margin: 0 10px 5px 0; white-space: nowrap;
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
-}
 .publication-links a {
-  position: relative; display: inline-block;
-  height: 30px; line-height: 28px; padding: 0 15px;
-  background-color: #0065bd; color: #fff;
-  transition: all 0.3s; margin: 0 -1px;
-  clip-path: polygon(0 50%, 10px 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 10px 100%);
+  display: inline-block; height: 32px; line-height: 30px;
+  padding: 0 12px; border-radius: 8px;
+  background: var(--tw-card-bg);
+  border: 1px solid var(--tw-border);
+  color: var(--tw-body-color);
+  transition: background .2s, border-color .2s, color .2s;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
 }
-.publication-link:hover a { background-color: #F06D89; color: #000; }
 
+.publication-link:hover a {
+  background: var(--tw-link); color: #fff; border-color: var(--tw-link);
+}
+.publication-links a:focus-visible { outline: 2px solid var(--tw-link); outline-offset: 2px; }
 /* =========================
    Teaching
    ========================= */
