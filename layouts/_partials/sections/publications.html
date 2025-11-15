@@ -18,7 +18,6 @@
         <div class="column is-4 publication-cover-column">
           <div class="publication-cover" style="width: 100%">
             {{ $video := .Resources.Get "cover.mp4" }}
-            {{ $video := .Resources.Get "cover.mp4" }}
             {{ $imgLight := .Resources.Get "cover.jpg" }}
             {{ $imgDark := .Resources.Get "dark_cover.jpg" }}
 
@@ -50,7 +49,12 @@
         </div>
 
         <div class="column">
-          <h3 class="publication-title">{{ .Title }}</h3>
+         {{ $page := . }}
+{{ with (index (where $page.Params.Links "name" "Paper") 0) }}
+  <h3 class="publication-title">
+    <a href="{{ .url }}" target="_blank" rel="noopener">{{ $page.Title }}</a>
+  </h3>
+{{ end }}
           <div class="publication-conference">{{ .Params.Conference }}{{ if .Params.Bonus }} <span class="bonus">({{
               .Params.Bonus }})</span>{{ end }}</div>
 
