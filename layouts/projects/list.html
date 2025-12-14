@@ -1,0 +1,81 @@
+{{ define "main" }}
+<section class="section projects-hero">
+  <div class="container">
+    <p class="projects-eyebrow">SIDe</p>
+    <h1>{{ .Title }}</h1>
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+<section class="section projects-catalog">
+  <div class="container">
+    {{ $projects := sort (where .Pages "Kind" "page") "Params.year" "desc" }}
+    {{ if gt (len $projects) 0 }}
+      <div class="project-card-grid">
+        {{ range $projects }}
+          {{ $project := . }}
+          <article class="project-card">
+            {{ $imgLight := or ($project.Resources.GetMatch "cover-light.*") ($project.Resources.GetMatch "cover_light.*") ($project.Resources.GetMatch "cover.*") }}
+            {{ $imgDark := or ($project.Resources.GetMatch "cover-dark.*") ($project.Resources.GetMatch "cover_dark.*") ($project.Resources.GetMatch "dark-cover.*") ($project.Resources.GetMatch "dark_cover.*") }}
+            {{ $imgForLight := or $imgLight $imgDark }}
+            {{ $imgForDark := or $imgDark $imgLight }}
+            {{ $hasImage := or $imgForLight $imgForDark }}
+            <figure class="project-card-media{{ if not $hasImage }} project-card-media--empty{{ end }}">
+              {{ if $hasImage }}
+                {{ with $imgForLight }}
+                  <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" class="theme-light" alt="{{ printf "%s cover art" $project.Title }}">
+                {{ end }}
+                {{ with $imgForDark }}
+                  <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" class="theme-dark" alt="{{ printf "%s cover art" $project.Title }}">
+                {{ end }}
+              {{ else }}
+                <span class="project-card-media-placeholder">Visual coming soon</span>
+              {{ end }}
+            </figure>
+            <div class="project-card-content">
+              {{ $projectDate := .Date }}
+              {{ if eq ($projectDate.Format "2006") "0001" }}
+                {{ with .Params.year }}
+                  {{ $parsed := time (printf "%v-01-01" .) }}
+                  {{ $projectDate = $parsed }}
+                {{ end }}
+              {{ end }}
+              <header class="project-card-header">
+                {{ if ne ($projectDate.Format "2006") "0001" }}
+                  <span class="project-year">{{ $projectDate.Format "January 2006" }}</span>
+                {{ end }}
+                {{ with .Params.status }}<span class="project-status">{{ humanize . }}</span>{{ end }}
+              </header>
+              <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+              <p>{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
+              {{ with .Params.stack }}
+                <p class="project-stack-label">Stack: <span>{{ delimit . ", " }}</span></p>
+              {{ end }}
+              {{ with .Params.highlights }}
+                <ul class="project-highlights">
+                  {{ range first 3 . }}
+                    <li>{{ . }}</li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+              <div class="project-links">
+                <a href="{{ .RelPermalink }}" class="project-link project-link-primary">Read more</a>
+                {{ with .Params.repo }}
+                  <a href="{{ . }}" class="project-link" target="_blank" rel="noopener">Repository</a>
+                {{ end }}
+              </div>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    {{ else }}
+      <div class="project-empty-state">
+        <p>Project entries will appear here as soon as you publish the first one.</p>
+        <code>hugo new --kind project projects/my-solver</code>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

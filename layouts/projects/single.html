@@ -1,0 +1,65 @@
+{{ define "main" }}
+<section class="section project-single">
+  <div class="container">
+    <p class="projects-breadcrumb"><a href="/projects/">← Back to all projects</a></p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.summary }}
+      <p class="project-single-summary">{{ . }}</p>
+    {{ end }}
+
+    <dl class="project-meta-grid">
+      {{ with .Params.year }}
+        <div>
+          <dt>Year</dt>
+          <dd>{{ . }}</dd>
+        </div>
+      {{ end }}
+      {{ with .Params.status }}
+        <div>
+          <dt>Status</dt>
+          <dd>{{ humanize . }}</dd>
+        </div>
+      {{ end }}
+      {{ with .Params.stack }}
+        <div>
+          <dt>Stack</dt>
+          <dd>{{ delimit . ", " }}</dd>
+        </div>
+      {{ end }}
+      {{ with .Params.repo }}
+        <div>
+          <dt>Repository</dt>
+          <dd><a href="{{ . }}" target="_blank" rel="noopener">{{ . }}</a></dd>
+        </div>
+      {{ end }}
+      {{ with .Params.external_url }}
+        <div>
+          <dt>Docs / Demo</dt>
+          <dd><a href="{{ . }}" target="_blank" rel="noopener">{{ . }}</a></dd>
+        </div>
+      {{ end }}
+      {{ with .Params.doi }}
+        <div>
+          <dt>DOI</dt>
+          <dd>{{ . }}</dd>
+        </div>
+      {{ end }}
+    </dl>
+
+    <div class="content project-body">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.highlights }}
+      <section class="project-highlight-callout">
+        <h2>Key highlights</h2>
+        <ul>
+          {{ range . }}
+            <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
