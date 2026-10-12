@@ -1,6 +1,6 @@
 +++
 title = 'RAM: Reachability Across Morphologies'
-conference = 'Preprint'
+conference = 'Conference on Robot Learning (CoRL)'
 date = 2026-06-09
 authors = [ 'Tim Walter', 'Xinyu Chen', 'Jonathan Külz', 'Matthias Althoff']
 cover1 = 'cover.jpg'
