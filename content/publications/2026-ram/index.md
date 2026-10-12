@@ -1,6 +1,6 @@
 +++
 title = 'RAM: Reachability Across Morphologies'
-conference = 'Conference on Robot Learning (CoRL)'
+conference = 'Conference on Robot Learning (CoRL) 2026'
 date = 2026-06-09
 authors = [ 'Tim Walter', 'Xinyu Chen', 'Jonathan Külz', 'Matthias Althoff']
 cover1 = 'cover.jpg'

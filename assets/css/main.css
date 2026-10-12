@@ -250,7 +250,7 @@ li { list-style: disc; }
 #social-media-icons { text-align: center; margin-top: 8px; }
 
 .social-icon img {
-  width: 30px; height: auto;
+  width: 35px; height: auto;
   transition: transform 0.2s ease, opacity 0.2s ease;
   vertical-align: middle;
   background: transparent !important;
